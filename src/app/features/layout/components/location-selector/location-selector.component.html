@@ -1,0 +1,24 @@
+<div class="header-item search-input">
+    <div
+        [formGroup]="form"
+        class="full-width"
+        nz-tooltip
+        [nzTooltipTitle]="locationsPanel"
+        [nzTooltipColor]="color"
+        [nzTooltipTrigger]="null"
+        nzTooltipPlacement="bottom"
+        [nzTooltipVisible]="showSelectionPanel"
+        nzTooltipOverlayClassName="weather-forecast-popover">
+        <app-input-text
+            [form]="form"
+            [control]="'searchTerm'"
+            className="no-padding-bottom"
+            placeholder="Enter address"
+            [onFocus]="onFocus"
+            [onBlur]="onBlur"></app-input-text>
+    </div>
+</div>
+
+<ng-template #locationsPanel>
+    <app-locations-list></app-locations-list>
+</ng-template>

@@ -1,0 +1,43 @@
+<div class="nav-bar-spacer">
+    <div
+        class="nav-options-group"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }">
+        <nz-space [nzSize]="40" nzDirection="vertical">
+            <a
+                *nzSpaceItem
+                routerLink="/"
+                routerLinkActive="active-link"
+                [routerLinkActiveOptions]="{ exact: true }"
+                ><app-nav-icon
+                    iconType="experiment"
+                    iconTheme="outline"></app-nav-icon
+            ></a>
+            <a *nzSpaceItem routerLink="/test" routerLinkActive="active-link"
+                ><app-nav-icon
+                    iconType="sync"
+                    iconTheme="outline"></app-nav-icon
+            ></a>
+            <a *nzSpaceItem routerLink="/test1" routerLinkActive="active-link"
+                ><app-nav-icon
+                    iconType="area-chart"
+                    iconTheme="outline"></app-nav-icon
+            ></a>
+            <a *nzSpaceItem routerLink="/test2" routerLinkActive="active-link"
+                ><app-nav-icon
+                    iconType="area-chart"
+                    iconTheme="outline"></app-nav-icon
+            ></a>
+            <a *nzSpaceItem routerLink="/test3" routerLinkActive="active-link"
+                ><app-nav-icon
+                    iconType="wifi"
+                    iconTheme="outline"></app-nav-icon
+            ></a>
+            <a *nzSpaceItem routerLink="/test4" routerLinkActive="active-link"
+                ><app-nav-icon
+                    iconType="wallet"
+                    iconTheme="outline"></app-nav-icon
+            ></a>
+        </nz-space>
+    </div>
+</div>

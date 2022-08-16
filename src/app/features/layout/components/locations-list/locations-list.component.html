@@ -1,0 +1,25 @@
+<div class="weather-forecast-popover">
+    <div
+        *ngIf="
+            locationsForecaseLookup$ | async as locationsList;
+            else noLocationResults
+        ">
+        <div *ngIf="locationsList.length > 0; else noLocationResults">
+            <div
+                *ngFor="let item of locationsList; index as i"
+                class="location-item">
+                <div nz-row (click)="selectLocation(item)">
+                    <div nz-col nzSpan="6">{{ item.location.name }}</div>
+                    <div nz-col nzSpan="1">|</div>
+                    <div nz-col nzSpan="9">{{ item.location.region }}</div>
+                    <div nz-col nzSpan="1">|</div>
+                    <div nz-col nzSpan="5">{{ item.location.country }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noLocationResults>
+    <div class="no-location-selected">We could not find any match.</div>
+</ng-template>

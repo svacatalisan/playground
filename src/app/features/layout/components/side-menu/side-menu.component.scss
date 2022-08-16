@@ -1,0 +1,32 @@
+@import '../../../../variables.scss';
+@import '../../../../measurements.scss';
+
+:host {
+    .nav-bar-spacer {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        justify-content: center;
+
+        .nav-options-group {
+            background: white;
+            border-radius: 0 $primary-border-radius $primary-border-radius 0;
+            box-shadow: 4px 0px 6px -2px $default-shadow-color;
+            padding: $quad-unit $double-unit;
+            ::ng-deep {
+                .active-link .nav-icon {
+                    * {
+                        color: $default-links-color;
+                        box-shadow: 0px 0px 15px -6px $default-links-color;
+                    }
+                }
+                .nav-icon {
+                    &:hover * {
+                        color: $default-links-color;
+                        box-shadow: 0px 0px 15px -6px $default-links-color;
+                    }
+                }
+            }
+        }
+    }
+}

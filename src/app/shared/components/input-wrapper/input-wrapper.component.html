@@ -1,0 +1,13 @@
+<nz-form-item [class]="className" [formGroup]="form" *ngIf="form && control">
+    <nz-form-control>
+        <nz-input-group>
+            <input
+                (blur)="onBlur?.()"
+                (focus)="onFocus?.()"
+                type="text"
+                nz-input
+                placeholder="Enter address"
+                [formControlName]="control" />
+        </nz-input-group>
+    </nz-form-control>
+</nz-form-item>

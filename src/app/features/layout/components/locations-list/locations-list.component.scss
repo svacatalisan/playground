@@ -1,0 +1,14 @@
+@import '../../../../variables.scss';
+@import '../../../../measurements.scss';
+
+.location-item {
+    cursor: pointer;
+    padding: 0 $double-unit;
+    padding-bottom: $layout-unit;
+    transform: translateX(-8px);
+    padding-top: $layout-unit;
+
+    &:hover {
+        background-color: $background-color-selectors;
+    }
+}

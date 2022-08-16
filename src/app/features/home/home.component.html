@@ -1,0 +1,40 @@
+<div>
+    <nz-descriptions
+        nzTitle="Location Info"
+        nzBordered
+        *ngIf="
+            currentLocationForecast$ | async as currentLocation;
+            else noLocationLoaded
+        ">
+        <nz-descriptions-item nzTitle="Location"
+            >{{ currentLocation.location.name }}}</nz-descriptions-item
+        >
+        <nz-descriptions-item nzTitle="Region">{{
+            currentLocation.location.region
+        }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Country">{{
+            currentLocation.location.country
+        }}</nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Coordinates" [nzSpan]="2">
+            {{ currentLocation.location.lat }} To
+            {{ currentLocation.location.lon }}
+        </nz-descriptions-item>
+        <nz-descriptions-item nzTitle="Weather:">
+            Current temperature:
+            {{ currentLocation.current.tempC | toCelsiusEntity }}
+            <br />
+            Maximum temperature:
+            {{ currentLocation.current.maxTempC | toCelsiusEntity }}
+            <br />
+            Maximum temperature:
+            {{ currentLocation.current.minTempC | toCelsiusEntity }}
+            <br />
+        </nz-descriptions-item>
+    </nz-descriptions>
+
+    <ng-template #noLocationLoaded>
+        <nz-descriptions
+            nzTitle="Location not loaded"
+            nzBordered></nz-descriptions>
+    </ng-template>
+</div>

@@ -1,0 +1,13 @@
+@import '../../../../measurements.scss';
+@import '../../../../variables.scss';
+
+.weather-forecast {
+    background: $background-color-selectors;
+    height: calc(100% - 3px);
+    .air-temperature {
+        font-size: $large-font-size;
+    }
+    .air-humidity {
+        font-size: $xsmall-font-size;
+    }
+}

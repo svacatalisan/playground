@@ -1,0 +1,78 @@
+<div
+    *ngIf="currentLocationForecast$ | async as currentLocationForecast"
+    class="header-item weather-forecast"
+    nz-row
+    nzAlign="middle"
+    nz-tooltip
+    [nzTooltipTitle]="contentTemplate"
+    [nzTooltipColor]="color"
+    nzTooltipTrigger="click"
+    nzTooltipPlacement="bottomRight"
+    nzTooltipOverlayClassName="weather-forecast-popover"
+    [nzTooltipTitleContext]="{ $implicit: currentLocationForecast$ }">
+    <div nz-col nzSpan="4">
+        <i nz-icon nzType="cloud" nzTheme="outline"></i>
+    </div>
+    <div nz-col nzSpan="16" nzOffset="4">
+        <div class="air-temperature" nz-row nzJustify="center">
+            <b>{{
+                currentLocationForecast?.current?.tempC | toCelsiusEntity
+            }}</b>
+        </div>
+        <div class="air-humidity" nz-row nzJustify="center">
+            {{ currentLocationForecast!.current!.chanceOfRain / 100 | percent }}
+            {{ currentLocationForecast?.current?.precipMm }} mm
+        </div>
+    </div>
+</div>
+
+<ng-template #contentTemplate let-currentLocationForecast$>
+    <div
+        class="weather-forecast-by-week"
+        *ngIf="
+            currentLocationForecast$ | async as currentLocationForecast;
+            else noLocationSelected
+        ">
+        <div nz-row>
+            <div nz-col nzSpan="10">
+                {{ getLocation(currentLocationForecast).name }}
+            </div>
+            <div class="separator" nz-col nzSpan="6">Min/Max</div>
+            <div class="separator" nz-col nzSpan="4">Rain</div>
+            <div class="separator" nz-col nzSpan="3">Eta</div>
+        </div>
+        <div
+            *ngFor="
+                let item of getWeeklyForecst(currentLocationForecast);
+                index as i
+            ">
+            <div
+                nz-row
+                [ngClass]="{
+                    active: isToday(item.time),
+                    disabled: !isBefore(item.time)
+                }">
+                <div nz-col nzSpan="3">{{ item.time | date: 'ccc' }}</div>
+                <div nz-col nzSpan="1">|</div>
+                <div nz-col nzSpan="4">{{ item.time | date: 'd LLL' }}</div>
+                <div nz-col nzSpan="2">
+                    <i nz-icon nzType="cloud" nzTheme="outline"></i>
+                </div>
+                <div class="separator" nz-col nzSpan="6">
+                    {{ item.minTempC | toCelsiusEntity }} -
+                    {{ item.maxTempC | toCelsiusEntity }}
+                </div>
+                <div class="separator" nz-col nzSpan="4">
+                    {{ item.chanceOfRain / 100 | percent }}
+                </div>
+                <div class="separator" nz-col nzSpan="3">
+                    {{ formatForecastEta(item.precipMm) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #noLocationSelected>
+    <div class="no-location-selected">There is no location selected.</div>
+</ng-template>

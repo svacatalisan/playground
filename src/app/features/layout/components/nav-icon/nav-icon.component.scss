@@ -1,0 +1,8 @@
+@import '../../../../variables.scss';
+@import '../../../../measurements.scss';
+.nav-icon {
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px -6px $default-shadow-color;
+    font-size: $nav-icon-font-size;
+    padding: $double-unit;
+}

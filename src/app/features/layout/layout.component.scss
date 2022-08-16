@@ -1,0 +1,86 @@
+@import '../../variables.scss';
+@import '../../measurements.scss';
+
+.app-main-layout {
+    background-color: $background-color;
+    color: $default-text-color;
+    height: 100vh;
+    width: 100vw;
+
+    .content-container {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        .main-container {
+            background: white;
+            box-shadow: 0px 0px 15px -6px $default-shadow-color;
+            width: 85%;
+            height: 85%;
+            border-radius: $primary-border-radius;
+            padding: 16px;
+        }
+    }
+}
+
+.sider-container {
+    background-color: transparent;
+}
+
+.weather-info {
+    min-width: 100px;
+}
+
+::ng-deep {
+    [class*='ant-col-'] {
+        line-height: 18px;
+    }
+
+    .ant-row {
+        white-space: nowrap;
+    }
+
+    .ant-form-item {
+        width: 100%;
+    }
+}
+
+::ng-deep {
+    .header-container {
+        background: white;
+        box-shadow: inset 0px -5px 10px -5px $default-shadow-color;
+        display: flex;
+        padding-right: 0;
+
+        .header-item {
+            align-items: center;
+            display: flex;
+            height: 100%;
+            justify-content: center;
+            padding: 0 $double-unit;
+        }
+
+        .header-item-border {
+            &:not(:last-of-type) {
+                border-right: 1px solid $default-shadow-color;
+            }
+        }
+
+        .search-input {
+            min-width: 300px;
+        }
+    }
+
+    .flex-spacer {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    .ant-form-item.no-padding-bottom {
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+}
